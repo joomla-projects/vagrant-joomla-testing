@@ -14,7 +14,7 @@ For more details see https://github.com/joomla-projects/gsoc16_browser-automated
 
 ### Installation
 
-Install Vagrant (available for all major operating systems) and navigate to
+Install Vagrant (available for all major operating systems) and navigate with the terminal (or cmd) to this directory.
 
 ```bash
 vagrant up
@@ -24,7 +24,7 @@ This is, depending on your internet connection, going to take some time. It's no
 
 ### Run tests
 
-Navigate to `/joomla/install/tests` and run `robo run:tests`
+Navigate with the terminal to `cd /joomla/install/tests` and run `robo run:tests`
 
 You can also run single tests after that with:
 
@@ -34,6 +34,10 @@ You can also run single tests after that with:
 
 Just open ./joomla/install folder in your hosts local IDE like PhpStorm and start editing, the folders are linked to the vagrant virtual machine.
 
+### Local ports
+
+If you want to open the site with your hosts browser just navigate to http://localhost:4242
+
 ### Passwords
 
 For the joomla user: `joomla`
@@ -41,9 +45,9 @@ Root user: `vagrant`
 
 The joomla user is allowed to use sudo
 
-### Local ports
+### Folder mapping
 
-If you want to open the site with your hosts browser just navigate to http://localhost:4242
+/joomla on the vagrant machine is mapped to the ./joomla directory
 
 ### Troubleshooting
 
