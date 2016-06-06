@@ -11,7 +11,7 @@ DEBIAN_FRONTEND='noninteractive' apt-get install -y mysql-server apache2 wget un
 	dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal
 
 # PHP 7
-DEBIAN_FRONTEND='noninteractive' apt-get install -y php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0-xdebug php7.0-xml
+DEBIAN_FRONTEND='noninteractive' apt-get install -y php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0-xdebug php7.0-xml php7.0-mbstring
 
 # clean up
 apt-get clean
@@ -19,8 +19,6 @@ apt-get clean
 # Make sure the permissions are alright.
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/authorized_keys
-
-
 
 # Install composer
 curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
@@ -41,10 +39,13 @@ adduser joomla sudo
 echo "" >> /etc/fstab
 echo "joomla /joomla  vboxsf  noauto,rw,uid=1002,gid=1002  0 0" >> /etc/fstab
 
-echo "" >> /etc/rc.localhost
+echo '#!/bin/sh -e' > /etc/rc.local
 echo "mount /joomla" >> /etc/rc.local
+echo "exit 0" >> /etc/rc.local
 
-# Graphical part
+echo "vboxsf" > /etc/modules
+
+# GUI part
 echo "" >> /home/joomla/.bashrc
 echo "" >> /home/joomla/.bashrc
 echo 'if [ -z "$DISPLAY" ] && [ $(tty) == /dev/tty1  ]; then
@@ -76,4 +77,5 @@ echo "---------------------"
 echo "Rebooting into your new system"
 echo "Everything setup - Thank you for helping Joomla!"
 
+# Restart into vbox
 reboot

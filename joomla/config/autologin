@@ -14,7 +14,7 @@
 # Aktionen
 case "$1" in
     start)
-        exec /sbin/agetty --autologin vagrant --noclear $1
+        exec /sbin/agetty --autologin joomla --noclear $1
         ;;
     stop)
         echo "Not implemented"
