@@ -8,7 +8,7 @@ apt-get -y update
 DEBIAN_FRONTEND='noninteractive' apt-get -y install git wget unzip
 
 DEBIAN_FRONTEND='noninteractive' apt-get install -y mysql-server apache2 wget unzip git fluxbox firefox openjdk-7-jre xvfb \
-	dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal
+	dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal xterm
 
 # PHP 7
 DEBIAN_FRONTEND='noninteractive' apt-get install -y php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0-xdebug php7.0-xml php7.0-mbstring

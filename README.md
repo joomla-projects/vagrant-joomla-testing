@@ -24,11 +24,11 @@ This is, depending on your internet connection, going to take some time. It's no
 
 ### Run tests
 
-Navigate with the terminal to `cd /joomla/install/tests` and run `robo run:tests`
+Navigate with the terminal to `cd /joomla/install` and run `tests/vendor/bin/robo run:tests`
 
 You can also run single tests after that with:
 
-`robo run:test`
+`tests/vendor/bin/robo run:test`
 
 ### Edit tests
 
