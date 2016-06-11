@@ -4,14 +4,23 @@ LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
 
 apt-get -y update
 
-# Install git
-DEBIAN_FRONTEND='noninteractive' apt-get -y install git wget unzip
+export DEBIAN_FRONTEND='noninteractive'
 
-DEBIAN_FRONTEND='noninteractive' apt-get install -y mysql-server apache2 wget unzip git fluxbox firefox openjdk-7-jre xvfb \
-	dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal xterm
+# Install git
+apt-get -y install git wget unzip
+
+apt-get install -y mysql-server apache2 wget unzip git fluxbox openjdk-7-jre xvfb \
+	dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal xterm firefox
 
 # PHP 7
-DEBIAN_FRONTEND='noninteractive' apt-get install -y php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0-xdebug php7.0-xml php7.0-mbstring
+apt-get install -y php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0-xdebug php7.0-xml php7.0-mbstring
+
+# Firefox 43 (Working with Selenium)
+wget –-quiet http://packages.linuxmint.com/pool/import/f/firefox/firefox_43.0~linuxmint1%2bbetsy_amd64.deb
+
+apt-get remove -y firefox
+
+dpkg -i --force-all firefox_43.0~linuxmint1+betsy_amd64.deb
 
 # clean up
 apt-get clean
@@ -60,7 +69,6 @@ cp -f /joomla/config/tty1.conf /etc/init/tty1.conf
 
 # Fluxbox autostart
 mkdir /home/joomla/.fluxbox
-cp /joomla/config/startup /home/joomla/.fluxbox/startup
 
 # Background
 cp /joomla/config/joomla.png /usr/share/images/fluxbox/ubuntu-light.png
