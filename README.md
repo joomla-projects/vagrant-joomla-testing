@@ -25,6 +25,17 @@ vagrant up
 
 The initial setup is, depending on your internet connection, going to take some time. It's normal for VirtualBox to show up, please don't login and wait for the installation to finish.
 
+### Update
+Updating to the latest version
+
+When new versions of the box are released you can update your local machine by executing:
+
+```
+vagrant box update
+```
+
+Note that updating the box will not update an already-running Vagrant machine. To reflect the changes in the box, you will have to destroy (`vagrant destroy`) and bring back up the Vagrant machine (`vagrant up`).
+
 ### Run tests
 
 Right click on the desktop to open the Fluxbox menu. Choose Joomla -> XTerm to open the Terminal.
