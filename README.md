@@ -44,11 +44,11 @@ Execute `runtests` to run all tests.
 
 #### Manually
 
-Navigate with the terminal to `cd /joomla/install` and run `tests/vendor/bin/robo run:tests`
+Navigate with the terminal to `cd /joomla/install` and run `tests/codeception/vendor/bin/robo run:tests`
 
 You can also run a single test afterwards with:
 
-`tests/vendor/bin/robo run:test`
+`tests/codeception/vendor/bin/robo run:test`
 
 ### Add / edit tests
 
