@@ -56,7 +56,7 @@ echo "vboxsf" > /etc/modules
 
 # Aliases
 echo "" >> /home/joomla/.bashrc
-echo "alias runtests='cd /joomla/install && ./tests/vendor/bin/robo run:tests'" >> /home/joomla/.bashrc
+echo "alias runtests='cd /joomla/install && ./tests/codeception/vendor/bin/robo run:tests'" >> /home/joomla/.bashrc
 
 # GUI part
 echo "" >> /home/joomla/.bashrc
