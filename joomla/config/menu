@@ -3,7 +3,7 @@
 [begin] (Fluxbox)
    [submenu] (Joomla) {}
      [exec] (XTerm) {xterm} </usr/share/pixmaps/xterm-color_32x32.xpm>
-     [exec] (Firefox) {firefox http://localhost/tests/joomla-cms3 https://github.com/joomla-projects/vagrant-joomla-testing https://github.com/joomla-projects/gsoc16_browser-automated-tests} </usr/share/pixmaps/firefox.png>
+     [exec] (Firefox) {firefox http://localhost/tests/codeception/joomla-cms3 https://github.com/joomla-projects/vagrant-joomla-testing https://github.com/joomla-projects/gsoc16_browser-automated-tests} </usr/share/pixmaps/firefox.png>
    [end]
    [submenu] (Applications) {}
       [submenu] (Accessibility) {}
