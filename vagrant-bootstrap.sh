@@ -81,7 +81,7 @@ chown -R joomla:joomla /home/joomla
 # Get joomla testing repository
 git clone --depth 1 https://github.com/joomla-projects/gsoc16_browser-automated-tests.git /joomla/install
 
-cd /joomla/install/tests
+cd /joomla/install/tests/codeception
 
 composer install
 
