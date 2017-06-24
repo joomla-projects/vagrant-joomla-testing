@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
     hostname = "joomlatesting.box"
     locale = "en_GB.UTF-8"
 
-    # use the default ubuntu 64bit image
+    # use the ubuntu 64bit image
     config.vm.box = "ubuntu/trusty64"
 
     config.vm.provider "virtualbox" do |v|

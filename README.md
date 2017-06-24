@@ -1,19 +1,22 @@
-# Joomla! Vagrant Testing box
+# Joomla Vagrant Testing box
 
-This vagrant box allows you to easily run and create tests for the Joomla! CMS.
+This vagrant box allows you to easily run and create tests for the Joomla CMS.
 
 [![ScreenShot](http://img.youtube.com/vi/Y7QSYELLEF8/0.jpg)](https://www.youtube.com/watch?v=Y7QSYELLEF8)
 
-For more details on tests see [https://github.com/joomla-projects/gsoc16_browser-automated-tests](https://github.com/joomla-projects/gsoc16_browser-automated-tests)
+For more details on tests see [https://github.com/joomla/joomla-cms/tree/staging/tests/codeception](https://github.com/joomla/joomla-cms/tree/staging/tests/codeception)
 
 ### Specs:
 
 * Ubuntu 14.04 LTS
 * Fluxbox
-* Apache 2
-* PHP 7 (Ondrej)
-* Joomla gsoc16_browser-automated-tests repository
-* MySQL
+* Apache 2.4
+* PHP 7 
+* Joomla repository
+* MySQL 5.7
+* OpenJDK 8 (needed for selenium)
+* Joomla staging
+* Firefox & Chrome
 
 ### Installation
 
@@ -23,7 +26,7 @@ Install Vagrant (available for all major operating systems) and navigate with th
 vagrant up
 ```
 
-The initial setup is, depending on your internet connection, going to take some time. It's normal for VirtualBox to show up, please don't login and wait for the installation to finish.
+The initial setup is, depending on your internet connection speed, going to take some time. It's normal for VirtualBox to show up, please don't login and wait for the installation to finish.
 
 ### Update
 Updating to the latest version
