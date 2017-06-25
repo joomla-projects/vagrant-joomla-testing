@@ -1,29 +1,31 @@
 # Setting up Vagrant
-# Update packages
+# Add ondrej for PHP 7.0
 LC_ALL=C.UTF-8 add-apt-repository ppa:ondrej/php
+LC_ALL=C.UTF-8 add-apt-repository ppa:openjdk-r/ppa
 
+JOOMLA_INSTALLATION=/joomla/install
+
+# Update packages
 apt-get -y update
 
 export DEBIAN_FRONTEND='noninteractive'
 
-# Install git
-apt-get -y install git wget unzip
+# Install dependencies
+apt-get install -y wget unzip git fluxbox openjdk-8-jre xvfb \
+	dbus libxss1 libappindicator1 libindicator7 xdg-utils libasound2 libqt4-dbus \
+    libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal xterm firefox
 
-apt-get install -y mysql-server apache2 wget unzip git fluxbox openjdk-7-jre xvfb \
-	dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libpython2.7 libqt4-xml libaudio2 fontconfig vim xorg rungetty gnome-terminal xterm firefox
+# AMP Stack
+apt-get install -y mysql-server apache2 php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli \
+ libapache2-mod-php7.0 php-xdebug php7.0-xml php7.0-mbstring php7.0-zip
 
-# PHP 7
-apt-get install -y php7.0 php7.0-mysql php7.0-mcrypt php7.0-curl php7.0-gd php7.0-opcache php7.0-cli libapache2-mod-php7.0 php7.0-xdebug php7.0-xml php7.0-mbstring
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome*.deb
 
-# Firefox 43 (Working with Selenium)
-wget –-quiet http://packages.linuxmint.com/pool/import/f/firefox/firefox_43.0~linuxmint1%2bbetsy_amd64.deb
-
-apt-get remove -y firefox
-
-dpkg -i --force-all firefox_43.0~linuxmint1+betsy_amd64.deb
+apt-get install -f -y
 
 # clean up
-apt-get clean
+apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Make sure the permissions are alright.
 chmod 700 ~/.ssh
@@ -46,7 +48,7 @@ adduser joomla sudo
 
 # automount vbox share, we can't use auto here..
 echo "" >> /etc/fstab
-echo "joomla /joomla  vboxsf  noauto,rw,uid=1002,gid=1002  0 0" >> /etc/fstab
+echo "joomla /joomla  vboxsf noauto,rw,uid=1002,gid=1002 0 0" >> /etc/fstab
 
 echo '#!/bin/sh -e' > /etc/rc.local
 echo "mount /joomla" >> /etc/rc.local
@@ -78,16 +80,26 @@ cp /joomla/config/menu /home/joomla/.fluxbox/menu
 
 chown -R joomla:joomla /home/joomla
 
-# Get joomla testing repository
-git clone --depth 1 https://github.com/joomla-projects/gsoc16_browser-automated-tests.git /joomla/install
+# Delete possible old installation
+if [ -d "$JOOMLA_INSTALLATION" ]; then
+    rm -rf "$JOOMLA_INSTALLATION"
+fi
 
-cd /joomla/install/tests/codeception
+# Get joomla repository
+git clone --depth 1 https://github.com/joomla/joomla-cms "$JOOMLA_INSTALLATION"
+
+cd "$JOOMLA_INSTALLATION/tests/codeception"
+
+cp acceptance.suite.dist.yml acceptance.suite.yml
 
 composer install
 
+chown -R joomla:joomla /joomla
+
 echo "---------------------"
 echo "Rebooting into your new system"
-echo "Everything setup - Thank you for helping Joomla!"
+echo "https://github.com/joomla-projects/vagrant-joomla-testing"
+echo "Everything setup - Thank you for testing Joomla!"
 
 # Restart into system
 reboot
